@@ -5,19 +5,19 @@ class ProductManager {
     }
 
     addProduct({ title, description, price, thumbnail, code, stock }) {
-      // Validar campos obligatorios
+
     if (!title || !description || !price || !thumbnail || !code || !stock) {
         console.error("Todos los campos son obligatorios.");
         return;
     }
 
-      // Validar que el código no esté repetido
+
     if (this.products.some(product => product.code === code)) {
         console.error("El código del producto ya está en uso.");
         return;
     }
 
-      // Agregar el producto con un id autoincrementable
+
     const newProduct = {
         id: this.productIdCounter++,
         title,
@@ -48,7 +48,7 @@ class ProductManager {
     }
 }
 
-  // Pruebas de funcionamiento
+
 const productManager = new ProductManager();
 
     console.log("Productos iniciales:", productManager.getProducts());
@@ -64,7 +64,7 @@ const productManager = new ProductManager();
 
 console.log("Productos después de agregar uno:", productManager.getProducts());
 
-  // Intentar agregar el mismo producto (debería fallar)
+
     productManager.addProduct({
     title: "camiseta 1",
     description: "Argentina",
@@ -74,9 +74,9 @@ console.log("Productos después de agregar uno:", productManager.getProducts());
     stock: 10,
 });
 
-  // Buscar producto por id
+
 const foundProduct = productManager.getProductById(1);
 console.log("Producto encontrado por ID:", foundProduct);
 
-  // Buscar producto inexistente por id (debería fallar)
+
 productManager.getProductById(50);
